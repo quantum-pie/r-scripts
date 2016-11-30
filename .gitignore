@@ -36,3 +36,6 @@ vignettes/*.pdf
 # Resources
 res/*
 .Rproj.user
+
+# Temorarily ignore exam
+exam*
