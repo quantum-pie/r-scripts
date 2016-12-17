@@ -109,3 +109,26 @@ ggplot(sales, aes(date, sale, color = shop, group = shop)) +
   stat_summary(fun.data = mean_cl_boot, position = position_dodge(0.2), geom = "errorbar", width = 0.2) +
   stat_summary(fun.y = mean, geom = "point", position = position_dodge(0.2)) + 
   stat_summary(fun.y = mean, geom = "line", position = position_dodge(0.2))
+
+#4
+iris_plot <- ggplot(iris, aes(Sepal.Length, Petal.Length, col = Species))+
+  geom_point() +
+  geom_smooth(method = "lm")+
+  scale_color_discrete(name = "Вид цветка", labels = c("Ирис щетинистый", "Ирис разноцветный", "Ирис виргинский"))+
+  scale_x_continuous(name = "Длина чашелистика", breaks = 4:8, limits = c(4, 8))+ 
+  scale_y_continuous(name = "Длина лепестка", breaks = 1:7)
+
+#5
+library(plotly)
+teapot.coords <- read.csv("~/Projects/R/github/teapot.csv", sep = ";")
+
+Sys.setenv("plotly_username" = "quantum-pie")
+Sys.setenv("plotly_api_key" = "fGo8KfzI8I0f4RWeUsKS")
+
+make.fancy.teapot <- function(teapot.coords) {
+  i.s <- seq(0, nrow(teapot.coords) - 1, 3)
+  j.s <- seq(1, nrow(teapot.coords) - 1, 3)
+  k.s <- seq(2, nrow(teapot.coords) - 1, 3)
+  p <- plot_ly(teapot.coords, type="mesh3d", x = ~x, y = ~y, z = ~z, i = i.s, j = j.s, k = k.s)
+  plotly_POST(p, "test")
+}
