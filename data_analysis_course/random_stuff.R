@@ -39,7 +39,7 @@ test_data <- as.data.frame(list(name = c("p4@HPS1", "p7@HPS2", "p4@HPS3", "p7@HP
 names = c("HPS5", "HPS6", "HPS9", "HPS2", "HPS3", "HPS7", "HPS4", "HPS8")
 my_names(test_data, names)
 
-# Fucking data.table
+# data.table
 library(data.table)
 #1
 filter.expensive.available <- function(products, brands) {
